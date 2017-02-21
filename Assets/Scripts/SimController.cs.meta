@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a823dde5f373b964fbb8816c18ccfefc
+timeCreated: 1487312707
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - PedestrianModel: {fileID: 1000011020583352, guid: 07a5f7178cf9f4d4cbf609967fff93fd,
+      type: 2}
+  - ObstacleMaterial: {fileID: 2100000, guid: a68bb54140ef0bb42b5590deec286930, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
