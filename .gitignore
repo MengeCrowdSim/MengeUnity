@@ -1,3 +1,8 @@
+## Local, custom ignores
+log.css
+
+## Github's default Unity ignores
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
