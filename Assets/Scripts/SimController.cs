@@ -24,7 +24,7 @@ public class SimController : MonoBehaviour {
 		Debug.Log ("Starting simulation...");
 
 		string demo = "4square";
-		string mengeRoot = @"E:\work\projects\menge_fork\";
+		string mengeRoot = @"C:\Users\abhaysharma\Documents\GitHub\Menge";
 		string behavior = String.Format(@"{0}examples\core\{1}\{1}B.xml", mengeRoot, demo);
 		string scene = String.Format(@"{0}examples\core\{1}\{1}S.xml", mengeRoot, demo);
 		Debug.Log ("\tInitialzing sim");
