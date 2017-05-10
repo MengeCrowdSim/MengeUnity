@@ -1,0 +1,13 @@
+Release
+
+	Features
+	Bugs
+		- Properly handle simulator initialization failure. No longer causes Unity to crash upon
+			failure. Instead, it runs without agents.
+		
+----------------------------------------------------------------
+Release 0.0.1
+	February 20, 2017
+	
+	Initial release.
+	
