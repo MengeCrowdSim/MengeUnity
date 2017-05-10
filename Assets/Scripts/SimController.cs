@@ -10,6 +10,7 @@ public class SimController : MonoBehaviour {
 
 	private MengeCS.Simulator _sim;
 	private List<GameObject> _objects = new List<GameObject>();
+    private bool _sim_is_valid = false;
 
 	private List<Color> classColors = new List<Color> () {
 		Color.red,
@@ -32,30 +33,42 @@ public class SimController : MonoBehaviour {
 		Debug.Log ("\t\tScene: " + scene);
 
 		_sim = new MengeCS.Simulator ();
-		bool result = _sim.Initialize (behavior, scene, "orca");
+        _sim_is_valid = _sim.Initialize (behavior, scene, "orca");
 
-		int COUNT = _sim.AgentCount;
-		Debug.Log (string.Format ("Simulator initialized with {0} agents", COUNT));
-		for (int i = 0; i < COUNT; ++i) {
-			MengeCS.Agent a = _sim.GetAgent (i);
-			UnityEngine.Vector3 pos = new UnityEngine.Vector3 (a.Position.X, a.Position.Y, a.Position.Z);
-			GameObject o = Instantiate (PedestrianModel, pos, Quaternion.identity) as GameObject;
-			if (o != null) {
-				o.transform.GetComponentInChildren<Renderer> ().material.color = classColors [a.Class % classColors.Count];
-				o.transform.GetChild(0).gameObject.transform.localScale = new UnityEngine.Vector3 (a.Radius * 2, 0.85f, a.Radius * 2);
-				_objects.Add (o);
-			}
-		}
+        if (_sim_is_valid)
+        {
+            int COUNT = _sim.AgentCount;
+            Debug.Log(string.Format("Simulator initialized with {0} agents", COUNT));
+            for (int i = 0; i < COUNT; ++i)
+            {
+                MengeCS.Agent a = _sim.GetAgent(i);
+                UnityEngine.Vector3 pos = new UnityEngine.Vector3(a.Position.X, a.Position.Y, a.Position.Z);
+                GameObject o = Instantiate(PedestrianModel, pos, Quaternion.identity) as GameObject;
+                if (o != null)
+                {
+                    o.transform.GetComponentInChildren<Renderer>().material.color = classColors[a.Class % classColors.Count];
+                    o.transform.GetChild(0).gameObject.transform.localScale = new UnityEngine.Vector3(a.Radius * 2, 0.85f, a.Radius * 2);
+                    _objects.Add(o);
+                }
+            }
+        } else
+        {
+            Debug.Log("Failed to initialize the simulator...");
+        }
 	}
 		
 	// Update is called once per frame
 	void Update () {
-		_sim.DoStep ();
-		UnityEngine.Vector3 newPos = new UnityEngine.Vector3 ();
-		for (int i = 0; i < _sim.AgentCount; ++i) {
-			MengeCS.Vector3 pos3d = _sim.GetAgent (i).Position;
-			newPos.Set (pos3d.X, pos3d.Y, pos3d.Z);
-			_objects [i].transform.position = newPos;
-		}
+        if (_sim_is_valid)
+        {
+            _sim.DoStep();
+            UnityEngine.Vector3 newPos = new UnityEngine.Vector3();
+            for (int i = 0; i < _sim.AgentCount; ++i)
+            {
+                MengeCS.Vector3 pos3d = _sim.GetAgent(i).Position;
+                newPos.Set(pos3d.X, pos3d.Y, pos3d.Z);
+                _objects[i].transform.position = newPos;
+            }
+        }
 	}
 }
