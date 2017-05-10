@@ -20,7 +20,7 @@ request).
 ![Unity File Open](https://github.com/MengeCrowdSim/MengeUnity/blob/master/doc/images/4_blocks.PNG)
 5. Open the `SimController` script for editing.
 6. Edit line 27 so the `mengeRoot` variable points to the path on your system where the Menge
-source is located.
+source is located. Make sure that the path includes a final '\' character.
 7. Save `SimController.cs` and return to the editor.
 8. Hit the `play` button.
 ![Unity File Open](https://github.com/MengeCrowdSim/MengeUnity/blob/master/doc/images/4_blocks_sim.PNG)
