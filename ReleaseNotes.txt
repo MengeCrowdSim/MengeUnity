@@ -1,6 +1,7 @@
 Release
 
 	Features
+		- Upgrade to v5.6 from v 5.4
 	Bugs
 		- Properly handle simulator initialization failure. No longer causes Unity to crash upon
 			failure. Instead, it runs without agents.
